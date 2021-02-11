@@ -40,9 +40,9 @@ QUnit.module('Тестируем функцию sort', function () {
 	});
 
 	QUnit.test('Функция работает с некорректными данными', function (assert) {
-		assert.throws(() => sort(123), TypeError(`${typeof 123} не является строкой`));
-		assert.throws(() => sort(null), TypeError(`${typeof null} не является строкой`));
-		assert.throws(() => sort(undefined), TypeError(`${typeof undefined} не является строкой`));
-		assert.throws(() => sort('123'), SyntaxError(`${123} содержит не только буквы`));
+		assert.throws(() => sort(123), TypeError('number не является строкой'));
+		assert.throws(() => sort(null), TypeError('object не является строкой'));
+		assert.throws(() => sort(undefined), TypeError('undefined не является строкой'));
+		assert.throws(() => sort('123'), SyntaxError('123 содержит не только буквы'));
 	});
 });
