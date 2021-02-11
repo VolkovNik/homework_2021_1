@@ -20,10 +20,13 @@ const sort = (inputUnsortedString) => {
 
   const collator = new Intl.Collator();
 
-  const sortedWords = words.map((word) => word
-    .split('').sort((a, b) => collator
-    .compare(a, b)).join(''))
-    .sort((a, b) => collator.compare(a, b));
+  const compareLetters = (letterA, letterB) => collator.compare(letterA, letterB);
+
+  const sortedWords = words
+    .map((word) => 
+      word.split('').sort(compareLetters).join(''))
+    .sort(compareLetters);
 
   return sortedWords.map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
 }
+
