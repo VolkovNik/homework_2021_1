@@ -8,22 +8,22 @@
  */
 
 const sort = (inputUnsortedString) => {
-	if (typeof inputUnsortedString !== 'string') {
-		throw new TypeError(`${typeof inputUnsortedString} не является строкой`);
-	}
+  if (typeof inputUnsortedString !== 'string') {
+    throw new TypeError(`${typeof inputUnsortedString} не является строкой`);
+  }
 
-	if (!/^[a-zа-яёA-ZА-ЯЁ ]+$/.test(inputUnsortedString)) {
-		throw new SyntaxError(`${inputUnsortedString} содержит не только буквы`);
-	}
+  if (!/^[a-zа-яёA-ZА-ЯЁ ]+$/.test(inputUnsortedString)) {
+    throw new SyntaxError(`${inputUnsortedString} содержит не только буквы`);
+  }
 
-	const words = inputUnsortedString.toLowerCase().split(' ');
+  const words = inputUnsortedString.toLowerCase().split(' ');
 
-	const collator = new Intl.Collator();
+  const collator = new Intl.Collator();
 
-	const sortedWords = words.map((word) => word
-		.split('').sort((a, b) => collator
-		.compare(a, b)).join(''))
-		.sort((a, b) => collator.compare(a, b));
+  const sortedWords = words.map((word) => word
+    .split('').sort((a, b) => collator
+    .compare(a, b)).join(''))
+    .sort((a, b) => collator.compare(a, b));
 
-	return sortedWords.map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
+  return sortedWords.map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
 }
