@@ -16,13 +16,14 @@ const sort = (inputUnsortedString) => {
 		throw new SyntaxError(`${inputUnsortedString} содержит не только буквы`);
 	}
 
-	const words = inputUnsortedString.toLowerCase().split(" ");
+	const words = inputUnsortedString.toLowerCase().split(' ');
 
 	const collator = new Intl.Collator();
 
-	const sortedWords = words.map((word) => word.split("").sort((a, b) => collator
-		.compare(a, b)).join(""))
+	const sortedWords = words.map((word) => word
+		.split('').sort((a, b) => collator
+		.compare(a, b)).join(''))
 		.sort((a, b) => collator.compare(a, b));
 
-	return sortedWords.map((word) => word[0].toUpperCase() + word.slice(1)).join(" ");
+	return sortedWords.map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
 }
